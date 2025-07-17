@@ -16,7 +16,15 @@ A simple and expressive utility class for handling date and time operations in P
 
 ## 📦 Installation
 
-Just include the class in your project via autoloading (e.g., via Composer):
+You can install the package via Composer:
+
+```bash
+composer require iescarro/php-util
+```
+
+Make sure your project supports PSR-4 autoloading.
+
+If you're loading it manually or without a full Composer project, ensure your autoloader includes the Util\ namespace:
 
 ```json
 "autoload": {
