@@ -52,11 +52,11 @@ echo Date::now()->months(1)->from_now(); // 1 month from now
 
 ### Constants
 
-* Date::DEFAULT_DATETIME_FORMAT – 'Y-m-d H:i:s'
+* `Date::DEFAULT_DATETIME_FORMAT` – 'Y-m-d H:i:s'
 
 ### Static Methods
 
-* Date::now($format) – returns the current datetime
+* `Date::now($format)` – returns the current datetime
 
 ### Chainable Helpers
 
