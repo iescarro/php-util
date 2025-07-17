@@ -55,7 +55,17 @@ class Date
         return date(self::DEFAULT_DATETIME_FORMAT, strtotime($this->date));
     }
 
-    public static function now($format = self::DEFAULT_DATETIME_FORMAT)
+    static function tomorrow($format = self::DEFAULT_DATETIME_FORMAT)
+    {
+        return self::now($format)->days(1)->from_now();
+    }
+
+    static function yesterday($format = self::DEFAULT_DATETIME_FORMAT)
+    {
+        return self::now($format)->days(1)->ago();
+    }
+
+    static function now($format = self::DEFAULT_DATETIME_FORMAT)
     {
         $date = new Date(date($format));
         return $date;
@@ -160,11 +170,13 @@ class Date
 
     function from_now($format = self::DEFAULT_DATETIME_FORMAT)
     {
-        return date($format, strtotime("+{$this->time}", strtotime($this->date)));
+        $this->date = date($format, strtotime("+{$this->time}", strtotime($this->date)));
+        return $this;
     }
 
     function ago($format = self::DEFAULT_DATETIME_FORMAT)
     {
-        return date($format, strtotime("-{$this->time}", strtotime($this->date)));
+        $this->date = date($format, strtotime("-{$this->time}", strtotime($this->date)));
+        return $this;
     }
 }
