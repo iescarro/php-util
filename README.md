@@ -45,15 +45,38 @@ composer dump-autoload
 ```php
 use Util\Date;
 
-echo Date::now(); // current datetime
+// Get the current date and time as a Date object
+echo Date::now(); 
+// Output: 2025-07-17 09:00:00
 
+// Create a Date object for a specific date
 $date = new Date('2024-01-01');
-echo $date->days_ago(3);         // 2023-12-29 00:00:00
-echo $date->months_from_now(2);  // 2024-03-01 00:00:00
 
-// Chainable, expressive
-echo Date::now()->days(7)->ago();    // 7 days ago from now
-echo Date::now()->months(1)->from_now(); // 1 month from now
+// Subtract 3 days from the date
+echo $date->days_ago(3);         
+// Output: 2023-12-29 00:00:00
+
+// Add 2 months to the date
+echo $date->months_from_now(2);  
+// Output: 2024-03-01 00:00:00
+
+// 🔁 Chainable and expressive style
+
+// 7 days ago from now
+echo Date::now()->days(7)->ago();    
+
+// 1 month from now
+echo Date::now()->months(1)->from_now(); 
+
+// 🧰 Useful shortcuts
+
+// Get yesterday's date
+echo Date::yesterday(); 
+// Output: 2025-07-16 00:00:00
+
+// Get tomorrow's date
+echo Date::tomorrow();  
+// Output: 2025-07-18 00:00:00
 ```
 
 ## 🧱 Class Reference
