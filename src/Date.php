@@ -55,6 +55,28 @@ class Date
         return date(self::DEFAULT_DATETIME_FORMAT, strtotime($this->date));
     }
 
+    function toHuman()
+    {
+        $now = new \DateTime();
+        $datetime = new \DateTime($this->date);
+        $diff = $now->diff($datetime);
+
+        // Determine past or future
+        $isPast = $datetime < $now;
+        $prefix = $isPast ? '' : 'in ';
+        $suffix = $isPast ? ' ago' : '';
+
+        // Build the human string
+        if ($diff->y > 0) return $prefix . $diff->y . ' year' . ($diff->y > 1 ? 's' : '') . $suffix;
+        if ($diff->m > 0) return $prefix . $diff->m . ' month' . ($diff->m > 1 ? 's' : '') . $suffix;
+        if ($diff->d > 0) return $prefix . $diff->d . ' day' . ($diff->d > 1 ? 's' : '') . $suffix;
+        if ($diff->h > 0) return $prefix . $diff->h . ' hour' . ($diff->h > 1 ? 's' : '') . $suffix;
+        if ($diff->i > 0) return $prefix . $diff->i . ' minute' . ($diff->i > 1 ? 's' : '') . $suffix;
+        if ($diff->s > 0) return $prefix . $diff->s . ' second' . ($diff->s > 1 ? 's' : '') . $suffix;
+
+        return 'just now';
+    }
+
     static function tomorrow($format = self::DEFAULT_DATETIME_FORMAT)
     {
         return self::now($format)->days(1)->from_now();
