@@ -2,6 +2,7 @@
 
 require('vendor/autoload.php');
 
+use function Util\print_pre;
 use Util\Date;
 use Util\Str;
 
@@ -18,3 +19,5 @@ echo Str::contains('Hello World', 'World') ? 'true' : 'false';
 echo "\n";
 echo Str::guid() . "\n";
 echo Str::slug('Hello World! This is a test.') . "\n";
+
+print_pre(array('name' => 'John', 'age' => 30, 'city' => 'New York'));
