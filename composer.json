@@ -1,16 +1,19 @@
 {
-    "name": "iescarro/php-util",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Util\\": "src/"
-        }
+  "name": "iescarro/php-util",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Util\\": "src/"
     },
-    "authors": [
-        {
-            "name": "Ian",
-            "email": "ian.escarro@gmail.com"
-        }
-    ],
-    "require": {}
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Ian",
+      "email": "ian.escarro@gmail.com"
+    }
+  ],
+  "require": {}
 }
