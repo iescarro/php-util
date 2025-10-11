@@ -37,9 +37,42 @@
 
 namespace Util;
 
-function print_pre($obj)
-{
-    echo '<pre>';
-    print_r($obj);
-    echo '</pre>';
+if (!function_exists('load_env')) {
+    function load_env($file_path = '.env')
+    {
+        $env_file = $file_path;
+        if (!file_exists($env_file)) {
+            return;
+        }
+
+        $lines = file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            // Skip comments
+            if (strpos(trim($line), '#') === 0) {
+                continue;
+            }
+
+            // Split key and value
+            list($key, $value) = explode('=', $line, 2);
+
+            // Remove any quotes around the value
+            $value = trim($value, '"\' ');
+
+            // Set environment variable if not already set
+            if (!isset($_ENV[$key]) && !isset($_SERVER[$key])) {
+                putenv("$key=$value");
+                $_ENV[$key] = $value;
+                $_SERVER[$key] = $value;
+            }
+        }
+    }
+}
+
+if (!function_exists('print_pre')) {
+    function print_pre($obj)
+    {
+        echo '<pre>';
+        print_r($obj);
+        echo '</pre>';
+    }
 }

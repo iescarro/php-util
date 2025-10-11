@@ -3,6 +3,7 @@
 require('vendor/autoload.php');
 
 use function Util\print_pre;
+use function Util\load_env;
 use Util\Date;
 use Util\Str;
 
@@ -21,3 +22,6 @@ echo Str::guid() . "\n";
 echo Str::slug('Hello World! This is a test.') . "\n";
 
 print_pre(array('name' => 'John', 'age' => 30, 'city' => 'New York'));
+
+load_env();
+echo getenv('APP_NAME');
