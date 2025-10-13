@@ -4,6 +4,7 @@ require('vendor/autoload.php');
 
 use function Util\print_pre;
 use function Util\load_env;
+use function Util\e;
 use Util\Date;
 use Util\Str;
 
@@ -25,3 +26,9 @@ print_pre(array('name' => 'John', 'age' => 30, 'city' => 'New York'));
 
 load_env();
 echo getenv('APP_NAME');
+
+echo e('Hello World!') . "\n";
+echo e('<script>alert("XSS")</script>') . "\n";
+echo e('"double quotes" & \'single quotes\'') . "\n";
+echo e(null) . "\n";
+echo e('Hello <b>World</b>') . "\n";
