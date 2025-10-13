@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Util\Date
+ * Util\helpers
  *
  * A simple utility class for handling date and time in PHP.
  *
@@ -27,7 +27,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @package    Util\Date
+ * @package    Util\helpers
  * @author     Ian Escarro <ian.escarro@gmail.com>
  * @copyright  Copyright (c) 2025, Ian Escarro
  * @license    https://opensource.org/licenses/MIT MIT License
@@ -36,6 +36,13 @@
  */
 
 namespace Util;
+
+if (! function_exists('e')) {
+    function e($value, $doubleEncode = true)
+    {
+        return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8', $doubleEncode);
+    }
+}
 
 if (!function_exists('load_env')) {
     function load_env($file_path = '.env')
